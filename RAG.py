@@ -35,7 +35,9 @@ rag_chain = create_retrieval_chain(db.as_retriever(), combine_docs_chain)
 res = rag_chain.invoke({"input": "What is the Table of Content for the paper 'Llama 2: Open Foundation and Fine-Tuned Chat Models'?"})
 answer = res['answer']
 
-res = rag_chain.invoke({"input": "How has Llama 2 improved model convergence speed during training?"})
+res2 = rag_chain.invoke({"input": "How has Llama 2 improved model convergence speed during training?"})
+answer2 = res['answer']
 
 
 print(answer)
+print(answer2)
