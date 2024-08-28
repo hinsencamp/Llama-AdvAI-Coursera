@@ -4,23 +4,9 @@
 
 1. Introduction
 2. Pretraining
-   2.1. PretrainingData
-   2.2. TrainingDetails
-   2.3. Llama2PretrainedModelEvaluation
 3. Fine-tuning
-   3.1. SupervisedFine-Tuning(SFT)
-   3.2. ReinforcementLearningwithHumanFeedback(RLHF)
-   3.3. SystemMessageforMulti-TurnConsistency
-   3.4. RLHFResults
 4. Safety
-   4.1. SafetyinPretraining
-   4.2. SafetyFine-Tuning
-   4.3. RedTeaming
-   4.4. SafetyEvaluationofLlama2-Chat
 5. Discussion
-   5.1. LearningsandObservations
-   5.2. LimitationsandEthicalConsiderations
-   5.3. ResponsibleReleaseStrategy
 6. Related Work
 7. Conclusion
 
