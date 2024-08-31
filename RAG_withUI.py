@@ -46,7 +46,7 @@ def generate_response(input_text):
 	combine_docs_chain = create_stuff_documents_chain(llm, retrieval_qa_chat_prompt)
 	rag_chain = create_retrieval_chain(db.as_retriever(), combine_docs_chain)
 	
-	res = rag_chain.invoke({"input": "What is the Table of Content for the paper 'Llama 2: Open Foundation and Fine-Tuned Chat Models'?"})
+	res = rag_chain.invoke({"input": input_text})
 	answer = res['answer']
 	
 	st.info(answer)
