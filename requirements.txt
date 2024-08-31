@@ -25,5 +25,6 @@ bitsandbytes==0.40.2
 transformers
 trl==0.4.7
 tokenizers
+together
 
 numpy>=1.22.2 # not directly required, pinned by Snyk to avoid a vulnerability
