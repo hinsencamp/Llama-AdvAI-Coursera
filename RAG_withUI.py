@@ -33,27 +33,26 @@ docs = text_splitter.split_documents(documents)
 
 def generate_response(input_text):
 
-		# create the open-source embedding function
-		embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-		
-		# load it into Chroma
-		db = Chroma.from_documents(docs, embedding_function)
-		
+	# create the open-source embedding function
+	embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+	
+	# load it into Chroma
+	db = Chroma.from_documents(docs, embedding_function)
+	
 
-		retriever = db.as_retriever(search_kwargs={"k": 1})
-		
-		llm = Ollama(model="AIresearcher:latest")
-		
-		retrieval_qa_chat_prompt = hub.pull("langchain-ai/retrieval-qa-chat")
-		
-		combine_docs_chain = create_stuff_documents_chain(llm, retrieval_qa_chat_prompt)
-		rag_chain = create_retrieval_chain(db.as_retriever(), combine_docs_chain)
-		
-		res = rag_chain.invoke({"input": "What is the Table of Content for the paper 'Llama 2: Open Foundation and Fine-Tuned Chat Models'?"})
-		answer = res['answer']
-		
-
-    st.info(answer)
+	retriever = db.as_retriever(search_kwargs={"k": 1})
+	
+	llm = Ollama(model="AIresearcher:latest")
+	
+	retrieval_qa_chat_prompt = hub.pull("langchain-ai/retrieval-qa-chat")
+	
+	combine_docs_chain = create_stuff_documents_chain(llm, retrieval_qa_chat_prompt)
+	rag_chain = create_retrieval_chain(db.as_retriever(), combine_docs_chain)
+	
+	res = rag_chain.invoke({"input": input_text})
+	answer = res['answer']
+	
+	st.info(answer)
 
 with st.form('my_form'):
   text = st.text_area('Enter text:', 'What do you want to know about Llama 2?')
