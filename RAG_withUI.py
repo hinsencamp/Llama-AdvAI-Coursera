@@ -36,8 +36,6 @@ def generate_response(input_text):
 	
 	# load it into Chroma
 	db = Chroma.from_documents(docs, embedding_function)
-
-	retriever = db.as_retriever(search_kwargs={"k": 1})
 	
 	llm = Ollama(model="AIresearcher:latest")
 	
